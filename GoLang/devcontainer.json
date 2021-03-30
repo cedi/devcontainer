@@ -1,0 +1,80 @@
+// For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.137.0/containers/go
+{
+	"name": "Go",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			// Update the VARIANT arg to pick a version of Go: 1, 1.15, 1.14
+			"VARIANT": "1.16",
+		}
+	},
+	"runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"go.toolsManagement.checkForUpdates": "off",
+		"go.gopath": "/go",
+		"go.lintOnSave": "package",
+		"go.formatTool": "goimports",
+		"go.useLanguageServer": true,
+		"go.autocompleteUnimportedPackages": true,
+		"go.vetOnSave": "package",
+		"go.editorContextMenuCommands": {
+			"toggleTestFile": true,
+			"addTags": true,
+			"removeTags": false,
+			"fillStruct": true,
+			"testAtCursor": true,
+			"testFile": false,
+			"testPackage": false,
+			"generateTestForFunction": true,
+			"generateTestForFile": false,
+			"generateTestForPackage": false,
+			"addImport": true,
+			"testCoverage": true,
+			"playground": true,
+			"debugTestAtCursor": true,
+			"benchmarkAtCursor": false
+		},
+		"go.toolsManagement.autoUpdate": true,
+		"go.enableCodeLens": {
+			"references": true,
+			"runtest": true
+		},
+		"[go]":{
+			"editor.insertSpaces": false,
+			"editor.formatOnSave": true,
+			"editor.codeActionsOnSave": {
+				"source.organizeImports": true
+			}
+		},
+		"codeQL.runningQueries.memory": 2048,
+        "codeQL.runningQueries.debug": true,
+		"git.autofetch": true,
+		"editor.renderFinalNewline": true,
+		"editor.codeLens": true
+	},
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"golang.Go",
+		"ms-azuretools.vscode-docker",
+		"github.vscode-codeql",
+		"davidanson.vscode-markdownlint",
+        "shardulm94.trailing-spaces",
+		"Tabnine.tabnine-vscode",
+		"github.vscode-pull-request-github",
+		"eamodio.gitlens"
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [9000],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "go version",
+
+	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+	//"remoteUser": "vscode"
+}
